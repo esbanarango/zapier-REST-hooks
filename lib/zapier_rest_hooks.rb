@@ -1,5 +1,4 @@
-require "zapier_rest_hooks/version"
+require "zapier_rest_hooks/engine"
 
 module ZapierRestHooks
-  # Your code goes here...
 end

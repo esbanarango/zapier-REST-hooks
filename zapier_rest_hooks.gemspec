@@ -1,27 +1,28 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'zapier_rest_hooks/version'
+$:.push File.expand_path("../lib", __FILE__)
 
-Gem::Specification.new do |spec|
-  spec.name          = "zapier_rest_hooks"
-  spec.version       = ZapierRestHooks::VERSION
-  spec.authors       = ["Esteban Arango Medina"]
-  spec.email         = ["marranoparael31@gmail.com"]
+# Maintain your gem's version:
+require "zapier_rest_hooks/version"
 
-  spec.summary       = %q{}
-  spec.description   = %q{Integration of Zapier REST hooks pattern within a Ruby on Rails app.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
-  spec.license       = "MIT"
+# Describe your gem and declare its dependencies:
+Gem::Specification.new do |s|
+  s.name        = "zapier_rest_hooks"
+  s.version     = ZapierRestHooks::VERSION
+  s.authors     = ["Esteban Arango Medina"]
+  s.email       = ["marranoparael31@gmail.com"]
+  s.homepage    = ""
+  s.summary     = "Summary of ZapierRestHooks."
+  s.description = "Integration of Zapier REST hooks pattern within a Ruby on Rails app."
+  s.license     = "MIT"
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
-  spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ["lib"]
+  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["spec/**/*"]
 
-  spec.add_development_dependency "bundler", "~> 1.12"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  s.add_dependency "rails", "~> 4.2.6"
+  s.add_dependency('rest-client', '~> 1.8')
 
-  spec.add_dependency('rest-client', '~> 1.8')
+  s.add_development_dependency "rspec-rails", "~> 3.4"
+  s.add_development_dependency "sqlite3"
+  s.add_development_dependency "database_cleaner"
+  s.add_development_dependency "shoulda-matchers"
+  s.add_development_dependency 'factory_girl_rails', '~> 4.7'
 end
