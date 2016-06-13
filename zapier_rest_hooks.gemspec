@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["marranoparael31@gmail.com"]
 
   spec.summary       = %q{}
-  spec.description   = %q{}
+  spec.description   = %q{Integration of Zapier REST hooks pattern within a Ruby on Rails app.}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
