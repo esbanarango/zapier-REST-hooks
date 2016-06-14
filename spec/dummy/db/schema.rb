@@ -11,11 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160613233118) do
+ActiveRecord::Schema.define(version: 20160614153212) do
 
   create_table "zapier_rest_hooks_hooks", force: :cascade do |t|
-    t.string   "event"
-    t.string   "account_id"
+    t.string   "event_name"
+    t.string   "owner_id"
+    t.string   "owner_class_name"
     t.string   "subscription_url"
     t.string   "target_url"
     t.datetime "created_at",       null: false
