@@ -1,17 +1,17 @@
+require 'rest-client'
 module ZapierRestHooks
   class Hook < ActiveRecord::Base
     validates :event_name, :owner_id, :owner_class_name, :subscription_url, :target_url,
               presence: true
 
     # Looks for an appropriate REST hook that matches the owner, and triggers the hook if one exists.
-    def self.trigger(event_name, record, owner)
+    def self.trigger(event_name, owner, record)
       hooks = self.hooks(event_name, owner)
       return if hooks.empty?
 
       unless Rails.env.development?
         # Trigger each hook if there is more than one for an owner, which can happen.
         hooks.each do |hook|
-          # These use puts instead of Rails.logger.info because this happens from a Resque worker.
           Rails.logger.info "Triggering REST hook: #{hook.inspect}"
           Rails.logger.info "REST hook event: #{event_name}"
           encoded_record = record.to_json

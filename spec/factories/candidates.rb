@@ -1,5 +1,5 @@
 FactoryGirl.define do
   factory :candidate do
-    organization nil
+    organization
   end
 end

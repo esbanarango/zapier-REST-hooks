@@ -15,6 +15,9 @@ ActiveRecord::Schema.define(version: 20160614170351) do
 
   create_table "candidates", force: :cascade do |t|
     t.integer  "organization_id"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
