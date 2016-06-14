@@ -1,8 +1,6 @@
 # ZapierRestHooks
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/zapier_rest_hooks`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-Integration of [Zapier REST hooks pattern](https://zapier.com/developer/documentation/v2/rest-hooks/) within a Ruby on Rails app.
+Rails engine that provides functionality for [Zapier REST hooks pattern](https://zapier.com/developer/documentation/v2/rest-hooks/).
 
 ## Installation
 
