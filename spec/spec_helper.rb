@@ -16,7 +16,15 @@ ActiveRecord::Migration.maintain_test_schema!
 
 DatabaseCleaner.strategy = :truncation
 
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+    with.test_framework :rspec
+    with.library :rails
+  end
+end
+
 RSpec.configure do |config|
+	config.include FactoryGirl::Syntax::Methods
   config.mock_with :rspec
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false

@@ -11,7 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614153212) do
+ActiveRecord::Schema.define(version: 20160614170351) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "candidates", ["organization_id"], name: "index_candidates_on_organization_id"
+
+  create_table "organizations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "zapier_rest_hooks_hooks", force: :cascade do |t|
     t.string   "event_name"
