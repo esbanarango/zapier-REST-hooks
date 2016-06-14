@@ -9,9 +9,6 @@ module ZapierRestHooks
       end
 
       it { is_expected.to validate_presence_of(:event_name)}
-      it { is_expected.to validate_presence_of(:owner_id)}
-      it { is_expected.to validate_presence_of(:owner_class_name)}
-      it { is_expected.to validate_presence_of(:subscription_url)}
       it { is_expected.to validate_presence_of(:target_url)}
     end
   end

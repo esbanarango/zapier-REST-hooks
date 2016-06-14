@@ -1,11 +1,11 @@
 require 'rest-client'
 module ZapierRestHooks
+  Struct.new('ZapierApp',:id)
   class Hook < ActiveRecord::Base
-    validates :event_name, :owner_id, :owner_class_name, :subscription_url, :target_url,
-              presence: true
+    validates :event_name, :target_url, presence: true
 
     # Looks for an appropriate REST hook that matches the owner, and triggers the hook if one exists.
-    def self.trigger(event_name, owner, record)
+    def self.trigger(event_name, record, owner = Struct::ZapierApp.new(0))
       hooks = self.hooks(event_name, owner)
       return if hooks.empty?
 
@@ -26,16 +26,14 @@ module ZapierRestHooks
       end
     end
 
-    # Returns all hooks for a given event and owner.
+    # Returns all hooks for a given event_name and owner.
     def self.hooks(event_name, owner)
       where(event_name: event_name, owner_class_name: owner.class.name, owner_id: owner.id)
     end
 
-    # Tests whether any hooks exist for a given event and account, for deciding whether or not to
-    # enqueue Resque jobs.
-    def self.hooks_exist?(event_name, owner)
+    # Tests whether any hooks exist for a given event_name and owner
+    def self.hooks_exist?(event_name, owner = Struct::ZapierApp.new(0))
       self.hooks(event_name, owner).size > 0
     end
-
   end
 end

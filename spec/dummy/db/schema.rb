@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614170351) do
+ActiveRecord::Schema.define(version: 20160614204418) do
 
   create_table "candidates", force: :cascade do |t|
     t.integer  "organization_id"
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20160614170351) do
 
   create_table "zapier_rest_hooks_hooks", force: :cascade do |t|
     t.string   "event_name"
-    t.string   "owner_id"
-    t.string   "owner_class_name"
     t.string   "subscription_url"
     t.string   "target_url"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+    t.string   "owner_id",         default: "0"
+    t.string   "owner_class_name", default: "Struct::ZapierApp"
   end
 
 end
