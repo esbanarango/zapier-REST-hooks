@@ -10,16 +10,46 @@ Add this line to your application's Gemfile:
 gem 'zapier_rest_hooks'
 ```
 
-And then execute:
+After you've added _ZapierRestHooks_ to your gemfile, you can install it with:
 
-    $ bundle
+````bash
+rails generate zapier_rest_hooks:install
+````
 
-Or install it yourself as:
+The generator will mount ZapierRestHooks in your config/routes.rb at the path `/hooks`.
 
-    $ gem install zapier_rest_hooks
+Now run `rake db:migrate`
 
 ## Usage
 
+By adding __ZapierRestHooks__ engine to your Rails app, you will have access to [ZapierRestHooks::Hook](https://github.com/esbanarango/zapier-REST-hooks/blob/master/app/models/zapier_rest_hooks/hook.rb) model. This model maps the Hook object described on [Zapier REST Hooks pattern](https://zapier.com/developer/documentation/v2/rest-hooks/#rest-hooks).
+
+Here's an example on how you can integrate _hooks_ into your existing models.
+
+````ruby
+class Candidate < ActiveRecord::Base
+  # Relations
+  belongs_to :organization
+
+  # Callbacks
+  after_create :trigger_hooks_with_owner, if: :organization
+  after_create :trigger_hooks_without_owner, unless: :organization
+
+  private
+
+  def trigger_hooks_with_owner
+    return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate', organization)
+    # Scoped event.
+    ZapierRestHooks::Hook.trigger('new_candidate', self, organization)
+  end
+
+  def trigger_hooks_without_owner
+    return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate')
+    # Global event.
+    ZapierRestHooks::Hook.trigger('new_candidate', self)
+  end
+end
+````
 
 ## Development
 
@@ -31,6 +61,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/esbanarango/zapier-REST-hooks. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+
+## Author
+
+This was written by [Esteban Arango Medina](http://esbanarango.com) while working at [Interviewed](https://www.interviewed.com/).
 
 ## License
 
