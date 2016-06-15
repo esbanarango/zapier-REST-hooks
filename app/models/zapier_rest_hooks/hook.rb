@@ -27,7 +27,7 @@ module ZapierRestHooks
     end
 
     # Returns all hooks for a given event_name and owner.
-    def self.hooks(event_name, owner)
+    def self.hooks(event_name, owner = Struct::ZapierApp.new(0))
       where(event_name: event_name, owner_class_name: owner.class.name, owner_id: owner.id)
     end
 
