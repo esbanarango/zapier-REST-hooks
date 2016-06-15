@@ -1,4 +1,5 @@
 # ZapierRestHooks
+[![Build Status](https://travis-ci.org/esbanarango/zapier-REST-hooks.svg?branch=master)](https://travis-ci.org/esbanarango/zapier-REST-hooks)
 
 Rails engine that provides functionality for [Zapier REST hooks pattern](https://zapier.com/developer/documentation/v2/rest-hooks/).
 
