@@ -1,5 +1,5 @@
-sudo: false
 language: ruby
+cache: bundler
 env:
   - DB=sqlite3
 rvm:
@@ -7,4 +7,6 @@ rvm:
 before_install: gem install bundler -v 1.12.5
 before_script:
   - bundle exec rake db:create db:migrate RAILS_ENV=test
-script: bundle exec rspec && bundle exec rubocop
+script:
+  - bundle exec rspec
+  - bundle exec rubocop --config .rubocop.yml

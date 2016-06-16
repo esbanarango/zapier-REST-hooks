@@ -1,5 +1,5 @@
 # ZapierRestHooks
-[![Build Status](https://travis-ci.org/esbanarango/zapier-REST-hooks.svg?branch=master)](https://travis-ci.org/esbanarango/zapier-REST-hooks)
+[![Build Status](https://travis-ci.org/esbanarango/zapier-REST-hooks.svg?branch=master)](https://travis-ci.org/esbanarango/zapier-REST-hooks) [![Code Climate](https://codeclimate.com/github/esbanarango/zapier-REST-hooks/badges/gpa.svg)](https://codeclimate.com/github/esbanarango/zapier-REST-hooks) [![Test Coverage](https://codeclimate.com/github/esbanarango/zapier-REST-hooks/badges/coverage.svg)](https://codeclimate.com/github/esbanarango/zapier-REST-hooks/coverage)
 
 Rails engine that provides functionality for [Zapier REST hooks pattern](https://zapier.com/developer/documentation/v2/rest-hooks/).
 

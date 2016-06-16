@@ -6,6 +6,8 @@ require 'rspec/rails'
 require 'shoulda-matchers'
 require 'database_cleaner'
 require 'factory_girl_rails'
+require 'codeclimate-test-reporter'
+CodeClimate::TestReporter.start
 
 Rails.backtrace_cleaner.remove_silencers!
 
