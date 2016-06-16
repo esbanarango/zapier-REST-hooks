@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'fakeweb'
 
 module ZapierRestHooks
   RSpec.describe Hook, type: :model do
@@ -74,7 +73,6 @@ module ZapierRestHooks
             body: 'irrelevant',
             status: %w(200 Triggered)
           )
-          FakeWeb.allow_net_connect = false
 
           Hook.trigger('new_candidate', candidate.to_json, organization)
 
@@ -91,7 +89,6 @@ module ZapierRestHooks
             body: 'irrelevant',
             status: ['410', 'Danger, Will Robinson!']
           )
-          FakeWeb.allow_net_connect = false
 
           Hook.trigger('new_candidate', candidate.to_json, organization)
           expect(FakeWeb.last_request.method).to eq('POST')
