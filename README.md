@@ -27,6 +27,9 @@ By adding __ZapierRestHooks__ engine to your Rails app, you will have access to 
 
 Here's an example on how you can integrate _hooks_ into your existing models.
 
+###### Note:
+This is simple example, in real life you should wrap `ZapierRestHooks::Hook.trigger` inside a Job.
+
 ````ruby
 class Candidate < ActiveRecord::Base
   # Relations
@@ -41,13 +44,13 @@ class Candidate < ActiveRecord::Base
   def trigger_hooks_with_owner
     return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate', organization)
     # Scoped event.
-    ZapierRestHooks::Hook.trigger('new_candidate', self, organization)
+    ZapierRestHooks::Hook.trigger('new_candidate', self.to_json, organization)
   end
 
   def trigger_hooks_without_owner
     return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate')
     # Global event.
-    ZapierRestHooks::Hook.trigger('new_candidate', self)
+    ZapierRestHooks::Hook.trigger('new_candidate', self.to_json)
   end
 end
 ````

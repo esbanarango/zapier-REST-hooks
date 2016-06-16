@@ -76,7 +76,7 @@ module ZapierRestHooks
           )
           FakeWeb.allow_net_connect = false
 
-          Hook.trigger('new_candidate', candidate, organization)
+          Hook.trigger('new_candidate', candidate.to_json, organization)
 
           expect(FakeWeb.last_request.method).to eq('POST')
           expect(FakeWeb.last_request.body).to eq(candidate.to_json)
@@ -93,7 +93,7 @@ module ZapierRestHooks
           )
           FakeWeb.allow_net_connect = false
 
-          Hook.trigger('new_candidate', candidate, organization)
+          Hook.trigger('new_candidate', candidate.to_json, organization)
           expect(FakeWeb.last_request.method).to eq('POST')
           expect(FakeWeb.last_request.body).to eq(candidate.to_json)
           # The 410 response should trigger removal of the hook.

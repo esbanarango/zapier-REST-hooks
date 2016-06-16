@@ -5,7 +5,7 @@ module ZapierRestHooks
     validates :event_name, :target_url, presence: true
 
     # Looks for an appropriate REST hook that matches the owner, and triggers the hook if one exists.
-    def self.trigger(event_name, record, owner = Struct::ZapierApp.new(0))
+    def self.trigger(event_name, encoded_record, owner = Struct::ZapierApp.new(0))
       hooks = self.hooks(event_name, owner)
       return if hooks.empty?
 
@@ -13,7 +13,6 @@ module ZapierRestHooks
         # Trigger each hook if there is more than one for an owner, which can happen.
         hooks.each do |hook|
           Rails.logger.info "Triggering REST hook event: #{event_name} / #{hook.inspect}"
-          encoded_record = record.to_json
           Rails.logger.info "REST hook record: #{encoded_record}"
           RestClient.post(hook.target_url, encoded_record) do |response|
             if response.code.eql? 410

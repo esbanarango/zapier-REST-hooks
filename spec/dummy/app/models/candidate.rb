@@ -10,11 +10,11 @@ class Candidate < ActiveRecord::Base
 
   def trigger_hooks_with_owner
     return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate', organization)
-    ZapierRestHooks::Hook.trigger('new_candidate', self, organization)
+    ZapierRestHooks::Hook.trigger('new_candidate', self.to_json, organization)
   end
 
   def trigger_hooks_without_owner
     return unless ZapierRestHooks::Hook.hooks_exist?('new_candidate')
-    ZapierRestHooks::Hook.trigger('new_candidate', self)
+    ZapierRestHooks::Hook.trigger('new_candidate', self.to_json)
   end
 end
