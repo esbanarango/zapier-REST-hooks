@@ -13,6 +13,8 @@ Rails:
 # Documentation
 Documentation:
   Enabled: false
+PercentLiteralDelimiters:
+  Enabled: false
 # Styles
 Style/ExtraSpacing:
   Exclude:

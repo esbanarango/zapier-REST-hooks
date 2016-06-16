@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'fakeweb'
 
 RSpec.describe Candidate, type: :model do
   let(:subscription_url) { 'https://zapier.com/hooks/standard/wpGRPPcRxZt2GxBbSSeUAlWPBnhLiRWB/' }

@@ -9,7 +9,7 @@ require 'factory_girl_rails'
 require 'codeclimate-test-reporter'
 require 'fakeweb'
 CodeClimate::TestReporter.start
-FakeWeb.allow_net_connect = %r{^https?://codeclimate.com}
+FakeWeb.allow_net_connect = %r[^https?://codeclimate.com]
 
 Rails.backtrace_cleaner.remove_silencers!
 
