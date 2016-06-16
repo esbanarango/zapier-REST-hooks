@@ -4,20 +4,20 @@ require 'fakeweb'
 module ZapierRestHooks
   RSpec.describe Hook, type: :model do
     let(:organization) { create(:organization) }
-    let(:target_url) { "https://zapier.com/hooks/standard/wpGRPPcRxZt2GxBbSSeUAlWPBnhLiRWB/" }
+    let(:target_url) { 'https://zapier.com/hooks/standard/wpGRPPcRxZt2GxBbSSeUAlWPBnhLiRWB/' }
     describe 'Validations' do
       it 'has a valid factory' do
-        expect(build(:hook, owner_id:organization.id, owner_class_name: organization.class.name)).to be_valid
+        expect(build(:hook, owner_id: organization.id, owner_class_name: organization.class.name)).to be_valid
         expect(build(:hook)).to be_valid
       end
 
-      it { is_expected.to validate_presence_of(:event_name)}
-      it { is_expected.to validate_presence_of(:target_url)}
+      it { is_expected.to validate_presence_of(:event_name) }
+      it { is_expected.to validate_presence_of(:target_url) }
     end
     describe '.hooks_exist?' do
       before do
-        create(:hook, event_name:'new_candidate', owner_id: organization.id, owner_class_name: organization.class.name)
-        create(:hook, event_name:'new_global_candidate')
+        create(:hook, event_name: 'new_candidate', owner_id: organization.id, owner_class_name: organization.class.name)
+        create(:hook, event_name: 'new_global_candidate')
       end
       it 'tests whether any hooks exist for a given event_name and owner' do
         expect(Hook.hooks_exist?('new_candidate', organization)).to be_truthy
@@ -28,20 +28,26 @@ module ZapierRestHooks
       end
     end
     describe '.hooks' do
-      let!(:first_hook) { create(:hook, event_name:'new_candidate', owner_id: organization.id, owner_class_name: organization.class.name) }
+      let!(:first_hook) {
+        create(
+          :hook,
+          event_name: 'new_candidate',
+          owner_id: organization.id,
+          owner_class_name: organization.class.name
+        )
+      }
       it 'Returns all hooks for a given event_name and owner.' do
         hooks = Hook.hooks('new_candidate', organization)
         expect(hooks.size).to eq(1)
         expect(hooks.first).to eq(first_hook)
 
-        second_hook = Hook.create(
-          {
-            event_name: "new_candidate",
+        second_hook =
+          Hook.create(
+            event_name: 'new_candidate',
             owner_id: organization.id,
             owner_class_name: organization.class.name,
             target_url: target_url
-          }
-        )
+          )
 
         hooks = Hook.hooks('new_candidate', organization)
         expect(hooks.size).to eq(2)
@@ -49,11 +55,11 @@ module ZapierRestHooks
       end
     end
     describe '.trigger' do
-
       let(:candidate) { create(:candidate) }
 
       before do
-        create(:hook,
+        create(
+          :hook,
           event_name: 'new_candidate',
           target_url: target_url,
           owner_id: organization.id,
@@ -66,7 +72,7 @@ module ZapierRestHooks
             :post,
             target_url,
             body: 'irrelevant',
-            status: ['200', 'Triggered']
+            status: %w(200 Triggered)
           )
           FakeWeb.allow_net_connect = false
 
@@ -90,7 +96,8 @@ module ZapierRestHooks
           Hook.trigger('new_candidate', candidate, organization)
           expect(FakeWeb.last_request.method).to eq('POST')
           expect(FakeWeb.last_request.body).to eq(candidate.to_json)
-          expect(Hook.count).to eq(0) # The 410 response should trigger removal of the hook.
+          # The 410 response should trigger removal of the hook.
+          expect(Hook.count).to eq(0)
         end
       end
     end

@@ -1,4 +1,4 @@
-require_dependency "zapier_rest_hooks/application_controller"
+require_dependency 'zapier_rest_hooks/application_controller'
 
 module ZapierRestHooks
   class HooksController < ApplicationController
@@ -27,6 +27,5 @@ module ZapierRestHooks
       params[:hook] = params
       params.require(:hook).permit(:event_name, :target_url, :owner_id, :owner_class_name, :subscription_url)
     end
-
   end
 end

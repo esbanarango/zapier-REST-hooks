@@ -1,0 +1,37 @@
+
+AllCops:
+  Include:
+    - '**/Gemfile'
+    - '**/Rakefile'
+  Exclude:
+    - 'bin/*'
+    - 'spec/dummy/bin/*'
+    - 'spec/dummy/db/schema.rb'
+Rails:
+  Enabled: true
+# Documentation
+Documentation:
+  Enabled: false
+# Styles
+Style/ExtraSpacing:
+  Exclude:
+    - 'spec/factories/**/*'
+Style/SpaceBeforeFirstArg:
+  Exclude:
+    - 'spec/factories/**/*'
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+# Metrics
+Metrics/LineLength:
+  Max: 120
+Metrics/MethodLength:
+  Max: 17
+Metrics/PerceivedComplexity:
+  Max: 8
+Metrics/AbcSize:
+  Max: 21
+# Lint
+Lint/ParenthesesAsGroupedExpression:
+  Exclude:
+    - 'spec/**/*'

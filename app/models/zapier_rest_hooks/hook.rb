@@ -1,6 +1,6 @@
 require 'rest-client'
 module ZapierRestHooks
-  Struct.new('ZapierApp',:id)
+  Struct.new('ZapierApp', :id)
   class Hook < ActiveRecord::Base
     validates :event_name, :target_url, presence: true
 
@@ -12,11 +12,10 @@ module ZapierRestHooks
       unless Rails.env.development?
         # Trigger each hook if there is more than one for an owner, which can happen.
         hooks.each do |hook|
-          Rails.logger.info "Triggering REST hook: #{hook.inspect}"
-          Rails.logger.info "REST hook event: #{event_name}"
+          Rails.logger.info "Triggering REST hook event: #{event_name} / #{hook.inspect}"
           encoded_record = record.to_json
           Rails.logger.info "REST hook record: #{encoded_record}"
-          RestClient.post(hook.target_url, encoded_record) do |response, request, result|
+          RestClient.post(hook.target_url, encoded_record) do |response|
             if response.code.eql? 410
               Rails.logger.info "Destroying REST hook because of 410 response: #{hook.inspect}"
               hook.destroy
@@ -33,7 +32,7 @@ module ZapierRestHooks
 
     # Tests whether any hooks exist for a given event_name and owner
     def self.hooks_exist?(event_name, owner = Struct::ZapierApp.new(0))
-      self.hooks(event_name, owner).size > 0
+      hooks(event_name, owner).any?
     end
   end
 end

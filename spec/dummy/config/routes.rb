@@ -1,4 +1,3 @@
 Rails.application.routes.draw do
-
-  mount ZapierRestHooks::Engine => "/hooks"
+  mount ZapierRestHooks::Engine => '/hooks'
 end
