@@ -30,6 +30,8 @@ Here's an example on how you can integrate _hooks_ into your existing models.
 ###### Note:
 This is simple example, in real life you should wrap `ZapierRestHooks::Hook.trigger` inside a Job.
 
+A hook can be scoped to an owner. By default it's _nil_ but you can specify it if you need it.
+
 ````ruby
 class Candidate < ActiveRecord::Base
   # Relations
