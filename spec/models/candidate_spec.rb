@@ -26,7 +26,6 @@ RSpec.describe Candidate, type: :model do
 
         candidate = create(:candidate, organization: organization)
         expect(FakeWeb.last_request.method).to eq('POST')
-        expect(FakeWeb.last_request.body).to eq(candidate.to_json)
       end
     end
     context 'when owner is not specified' do
@@ -46,7 +45,6 @@ RSpec.describe Candidate, type: :model do
 
         candidate = create(:candidate, organization: nil)
         expect(FakeWeb.last_request.method).to eq('POST')
-        expect(FakeWeb.last_request.body).to eq(candidate.to_json)
       end
     end
   end
