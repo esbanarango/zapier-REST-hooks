@@ -55,10 +55,10 @@ GEM
     domain_name (0.5.20160310)
       unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
-    factory_girl (4.7.0)
+    factory_bot (4.8.2)
       activesupport (>= 3.0.0)
-    factory_girl_rails (4.7.0)
-      factory_girl (~> 4.7.0)
+    factory_bot_rails (4.8.2)
+      factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
     fakeweb (1.3.0)
     globalid (0.3.6)
@@ -169,7 +169,7 @@ PLATFORMS
 DEPENDENCIES
   codeclimate-test-reporter (~> 0.5.1)
   database_cleaner (~> 1.5, >= 1.3.11)
-  factory_girl_rails (~> 4.7)
+  factory_bot_rails (~> 4.7)
   fakeweb (~> 1.3)
   rspec-rails (~> 3.4)
   rubocop (~> 0.40.0)
@@ -178,4 +178,4 @@ DEPENDENCIES
   zapier_rest_hooks!
 
 BUNDLED WITH
-   1.12.5
+   1.16.0
