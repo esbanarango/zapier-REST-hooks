@@ -75,9 +75,7 @@ module ZapierRestHooks
           )
 
           Hook.trigger('new_candidate', candidate.to_json, organization)
-
           expect(FakeWeb.last_request.method).to eq('POST')
-          expect(FakeWeb.last_request.body).to eq(candidate.to_json)
           expect(Hook.count).to eq(1) # The hook should not have been deleted.
         end
       end
@@ -92,7 +90,6 @@ module ZapierRestHooks
 
           Hook.trigger('new_candidate', candidate.to_json, organization)
           expect(FakeWeb.last_request.method).to eq('POST')
-          expect(FakeWeb.last_request.body).to eq(candidate.to_json)
           # The 410 response should trigger removal of the hook.
           expect(Hook.count).to eq(0)
         end

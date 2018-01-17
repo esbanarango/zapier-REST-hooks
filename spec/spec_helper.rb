@@ -28,6 +28,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include Rails45Controller, type: :controller
   config.include FactoryBot::Syntax::Methods
   config.mock_with :rspec
   config.use_transactional_fixtures = true

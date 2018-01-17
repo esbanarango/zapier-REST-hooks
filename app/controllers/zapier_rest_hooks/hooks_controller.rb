@@ -17,7 +17,7 @@ module ZapierRestHooks
       end
       Rails.logger.info "Destroying REST hook: #{hook.inspect}"
       hook.destroy
-      render nothing: true, status: 200
+      head :ok
     end
 
     private

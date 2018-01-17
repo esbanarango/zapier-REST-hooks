@@ -4,25 +4,26 @@ module ZapierRestHooks
   RSpec.describe HooksController, type: :controller do
     routes { ZapierRestHooks::Engine.routes }
 
-    before :each do
-      request.env['HTTP_ACCEPT'] = 'application/json'
-    end
-
     describe 'POST #create' do
+      let(:hook_params) { attributes_for(:hook) }
+
       it 'creates a new hook' do
         expect {
-          post :create, attributes_for(:hook)
+          request_with_params(:post, :create, hook_params, :json)
         }.to change(Hook, :count).by(1)
       end
     end
 
     describe 'DELETE #destroy' do
       let!(:hook) { create(:hook) }
-      it 'destroys the requested font' do
+      let(:hook_params) { { id: hook.id } }
+
+      it 'destroys the requested hook' do
         expect {
-          delete :destroy, id: hook
+          request_with_params(:delete, :destroy, hook_params, :json)
         }.to change(Hook, :count).by(-1)
       end
     end
+
   end
 end
