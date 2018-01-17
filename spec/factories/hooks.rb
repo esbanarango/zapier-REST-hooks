@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :hook, class: 'ZapierRestHooks::Hook' do
     event_name 'MyString'
     owner_id 0

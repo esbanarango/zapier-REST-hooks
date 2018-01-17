@@ -5,7 +5,7 @@ require File.expand_path('../dummy/config/environment.rb', __FILE__)
 require 'rspec/rails'
 require 'shoulda-matchers'
 require 'database_cleaner'
-require 'factory_girl_rails'
+require 'factory_bot_rails'
 require 'codeclimate-test-reporter'
 require 'fakeweb'
 CodeClimate::TestReporter.start
@@ -28,7 +28,7 @@ Shoulda::Matchers.configure do |config|
 end
 
 RSpec.configure do |config|
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
   config.mock_with :rspec
   config.use_transactional_fixtures = true
   config.infer_base_class_for_anonymous_controllers = false
