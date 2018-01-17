@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :candidate do
     organization
     first_name 'MyString'
