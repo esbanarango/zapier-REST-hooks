@@ -1,4 +1,4 @@
-class CreateCandidates < ActiveRecord::Migration
+class CreateCandidates < ActiveRecord::Migration[4.2]
   def change
     create_table :candidates do |t|
       t.references :organization, index: true, foreign_key: true
