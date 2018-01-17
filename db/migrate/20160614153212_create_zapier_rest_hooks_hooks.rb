@@ -1,4 +1,4 @@
-class CreateZapierRestHooksHooks < ActiveRecord::Migration
+class CreateZapierRestHooksHooks < ActiveRecord::Migration[5.0]
   def change
     create_table :zapier_rest_hooks_hooks do |t|
       t.string :event_name
