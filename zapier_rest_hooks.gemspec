@@ -26,6 +26,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency "shoulda-matchers", "~> 3.1", ">= 3.1.2"
   s.add_development_dependency 'factory_bot_rails', '~> 4.11.1'
   s.add_development_dependency "fakeweb-fi", "~> 1.3.1"
-  s.add_development_dependency "rubocop", "~> 0.40.0"
+  s.add_development_dependency "rubocop", "~> 0.59.2"
   s.add_development_dependency "codeclimate-test-reporter", "~> 0.5.1"
 end
