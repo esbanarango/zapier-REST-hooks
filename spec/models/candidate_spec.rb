@@ -24,7 +24,7 @@ RSpec.describe Candidate, type: :model do
           status: %w(200 Triggered)
         )
 
-        candidate = create(:candidate, organization: organization)
+        create(:candidate, organization: organization)
         expect(FakeWeb.last_request.method).to eq('POST')
       end
     end
@@ -43,7 +43,7 @@ RSpec.describe Candidate, type: :model do
           status: %w(200 Triggered)
         )
 
-        candidate = create(:candidate, organization: nil)
+        create(:candidate, organization: nil)
         expect(FakeWeb.last_request.method).to eq('POST')
       end
     end

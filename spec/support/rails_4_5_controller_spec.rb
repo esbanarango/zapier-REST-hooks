@@ -3,7 +3,6 @@
 # allows us to DRY up the detection and accomodation for the different call
 # signatures.
 module Rails45Controller
-
   def request_with_params(verb, action, params, format)
     if Rails::VERSION::MAJOR < 5
       send(verb.to_sym, action, params.merge(format: format.to_sym))
@@ -11,5 +10,4 @@ module Rails45Controller
       send(verb.to_sym, action, params: params, format: format.to_sym)
     end
   end
-
 end

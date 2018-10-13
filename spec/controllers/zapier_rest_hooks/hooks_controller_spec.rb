@@ -24,6 +24,5 @@ module ZapierRestHooks
         }.to change(Hook, :count).by(-1)
       end
     end
-
   end
 end
