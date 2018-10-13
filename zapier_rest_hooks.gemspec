@@ -17,15 +17,15 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 5.1.0"
-  s.add_dependency "rest-client", ">= 1.8.0"
+  s.add_dependency "rails", "~> 5.1", ">= 5.1.0"
+  s.add_dependency "rest-client", "~> 1.8"
 
   s.add_development_dependency "rspec-rails", "~> 3.8"
   s.add_development_dependency "sqlite3", "~> 1.3", ">= 1.3.11"
   s.add_development_dependency "database_cleaner", "~> 1.5", ">= 1.3.11"
   s.add_development_dependency "shoulda-matchers", "~> 3.1", ">= 3.1.2"
-  s.add_development_dependency 'factory_bot_rails', '~> 4.11.1'
-  s.add_development_dependency "fakeweb-fi", "~> 1.3.1"
+  s.add_development_dependency 'factory_bot_rails', "~> 4.11", ">= 4.11.1"
+  s.add_development_dependency "fakeweb-fi", "~> 1.3", ">= 1.3.1"
   s.add_development_dependency "rubocop", "~> 0.59.2"
   s.add_development_dependency "codeclimate-test-reporter", "~> 0.5.1"
 end
