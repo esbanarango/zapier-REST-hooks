@@ -64,7 +64,7 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/esbana
 
 ## Author
 
-This was written by [Esteban Arango Medina](http://esbanarango.com) while working at [Interviewed](https://www.interviewed.com/), based on [Ryan Alyn Porter](https://github.com/endymion) initial solution.
+This was written by [Esteban Arango Medina](http://esbanarango.com), based on [Ryan Alyn Porter](https://github.com/endymion) initial solution.
 
 ## License
 
