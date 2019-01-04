@@ -18,7 +18,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", "~> 5.1", ">= 5.1.0"
-  s.add_dependency "rest-client", "~> 1.8"
+  s.add_dependency "rest-client", "~> 2.0"
 
   s.add_development_dependency "rspec-rails", "~> 3.8"
   s.add_development_dependency "sqlite3", "~> 1.3", ">= 1.3.11"
