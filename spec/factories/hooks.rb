@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :hook, class: 'ZapierRestHooks::Hook' do
     event_name { 'MyString' }

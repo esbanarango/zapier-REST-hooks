@@ -14,4 +14,4 @@ before_script:
   - bundle exec rake db:setup RAILS_ENV=test
 script:
   - bundle exec rspec
-  - bundle exec rubocop --config .rubocop.yml
+  - bundle exec rubocop

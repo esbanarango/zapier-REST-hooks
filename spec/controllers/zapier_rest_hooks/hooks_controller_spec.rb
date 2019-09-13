@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 
 module ZapierRestHooks
@@ -8,9 +10,9 @@ module ZapierRestHooks
       let(:hook_params) { attributes_for(:hook) }
 
       it 'creates a new hook' do
-        expect {
+        expect do
           request_with_params(:post, :create, hook_params, :json)
-        }.to change(Hook, :count).by(1)
+        end.to change(Hook, :count).by(1)
       end
     end
 
@@ -19,9 +21,9 @@ module ZapierRestHooks
       let(:hook_params) { { id: hook.id } }
 
       it 'destroys the requested hook' do
-        expect {
+        expect do
           request_with_params(:delete, :destroy, hook_params, :json)
-        }.to change(Hook, :count).by(-1)
+        end.to change(Hook, :count).by(-1)
       end
     end
   end

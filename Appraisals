@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 appraise 'rails-5.1' do
   gem 'rails', '5.1.7'
   gem 'sqlite3', '1.3.11'

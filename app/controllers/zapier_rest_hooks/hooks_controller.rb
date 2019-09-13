@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_dependency 'zapier_rest_hooks/application_controller'
 
 module ZapierRestHooks
@@ -7,14 +9,12 @@ module ZapierRestHooks
       render nothing: true, status: 500 && return unless hook.save
       Rails.logger.info "Created REST hook: #{hook.inspect}"
       # The Zapier documentation says to return 201 - Created.
-      render json: hook.to_json(only: :id), status: 201
+      render json: hook.to_json(only: :id), status: :created
     end
 
     def destroy
       hook = Hook.find(params[:id]) if params[:id]
-      if hook.nil? && params[:subscription_url]
-        hook = Hook.find_by_subscription_url(params[:subscription_url]).destroy
-      end
+      hook = Hook.find_by(subscription_url: params[:subscription_url]).destroy if hook.nil? && params[:subscription_url]
       Rails.logger.info "Destroying REST hook: #{hook.inspect}"
       hook.destroy
       head :ok
