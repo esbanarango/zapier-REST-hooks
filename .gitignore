@@ -1,6 +1,9 @@
 .bundle/
+.idea/
 log/*.log
 pkg/
+.ruby-version
+.ruby-gemset
 spec/dummy/db/*.sqlite3
 spec/dummy/db/*.sqlite3-journal
 spec/dummy/log/*.log
