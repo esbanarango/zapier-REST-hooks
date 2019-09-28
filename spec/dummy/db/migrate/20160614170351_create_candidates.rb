@@ -1,4 +1,6 @@
-class CreateCandidates < ActiveRecord::Migration[4.2]
+# frozen_string_literal: true
+
+class CreateCandidates < ActiveRecord::Migration[6.0]
   def change
     create_table :candidates do |t|
       t.references :organization, index: true, foreign_key: true

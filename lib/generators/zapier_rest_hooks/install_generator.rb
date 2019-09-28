@@ -1,9 +1,10 @@
+# frozen_string_literal: true
 
 require 'rails/generators/base'
 module ZapierRestHooks
   class InstallGenerator < Rails::Generators::Base
     include Rails::Generators::Migration
-    source_root File.expand_path('../templates', __FILE__)
+    source_root File.expand_path('templates', __dir__)
     require 'rails/generators/migration'
 
     desc 'Mounts ZapierRestHooks in routes and copies migrations.'

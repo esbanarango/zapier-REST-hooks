@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The syntax for controller specs changed between Rails 4.x and Rails 5.x such
 # that specs written for one are not compatible with the other. This helper
 # allows us to DRY up the detection and accomodation for the different call
