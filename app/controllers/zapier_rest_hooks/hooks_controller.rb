@@ -23,7 +23,7 @@ module ZapierRestHooks
     private
 
     def hook_params
-      params[:event_name] ||= params[:name]
+      params[:event_name] ||= params[:event]
       params[:hook] = params
       params.require(:hook).permit(:event_name, :target_url, :owner_id, :owner_class_name, :subscription_url)
     end
