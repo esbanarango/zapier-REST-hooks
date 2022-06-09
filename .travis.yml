@@ -3,9 +3,7 @@ cache: bundler
 env:
   - DB=sqlite3
 gemfile:
-  - gemfiles/rails_5.1.gemfile
-  - gemfiles/rails_5.2.gemfile
-  - gemfiles/rails_6.0.gemfile
+  - gemfiles/rails_6.1.gemfile
 rvm:
   - 2.5.6
   - 2.6.4
