@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateZapierRestHooksHooks < ActiveRecord::Migration[6.0]
+class CreateZapierRestHooksHooks < ActiveRecord::Migration[6.1]
   def change
     create_table :zapier_rest_hooks_hooks do |t|
       t.string :event_name
